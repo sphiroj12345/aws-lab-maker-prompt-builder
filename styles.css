@@ -1,0 +1,595 @@
+/* CSS Variables */
+:root {
+    --aws-orange: #FF9900;
+    --aws-orange-dark: #E88B00;
+    --aws-dark: #232F3E;
+    --aws-darker: #1A242F;
+    --aws-light: #F2F3F3;
+    --aws-blue: #527FFF;
+    --aws-blue-dark: #3B6FE8;
+    --text-primary: #16191F;
+    --text-secondary: #545B64;
+    --text-muted: #879596;
+    --border-color: #D5DBDB;
+    --bg-white: #FFFFFF;
+    --bg-card: #FAFAFA;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --transition: 0.2s ease;
+}
+
+/* Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* App Container */
+.app-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.app-header {
+    text-align: center;
+    padding: 30px 20px 20px;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.aws-icon {
+    color: var(--aws-orange);
+}
+
+.logo h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--aws-dark);
+}
+
+.logo h1 .highlight {
+    color: var(--aws-orange);
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 4px;
+}
+
+/* Progress Bar */
+.progress-container {
+    padding: 20px 0 30px;
+}
+
+.progress-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+}
+
+.step-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--border-color);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all var(--transition);
+}
+
+.progress-step.active .step-circle {
+    background: var(--aws-orange);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 153, 0, 0.3);
+}
+
+.progress-step.completed .step-circle {
+    background: #28a745;
+    color: white;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.progress-step.active .step-label {
+    color: var(--aws-orange);
+    font-weight: 600;
+}
+
+.progress-step.completed .step-label {
+    color: #28a745;
+}
+
+.progress-line {
+    flex: 1;
+    height: 3px;
+    background: var(--border-color);
+    margin: 0 8px;
+    margin-bottom: 22px;
+    border-radius: 2px;
+    min-width: 40px;
+    max-width: 80px;
+    transition: background var(--transition);
+}
+
+.progress-line.active {
+    background: var(--aws-orange);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+}
+
+/* Wizard Steps */
+.wizard-step {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.step-header h2 {
+    font-size: 1.5rem;
+    color: var(--aws-dark);
+    margin-bottom: 6px;
+}
+
+.step-header p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.service-card {
+    background: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    user-select: none;
+}
+
+.service-card:hover {
+    border-color: var(--aws-orange);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+
+.service-card.selected {
+    border-color: var(--aws-orange);
+    background: #FFF8F0;
+    box-shadow: 0 2px 8px rgba(255, 153, 0, 0.15);
+}
+
+.service-card .checkbox {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all var(--transition);
+}
+
+.service-card.selected .checkbox {
+    background: var(--aws-orange);
+    border-color: var(--aws-orange);
+}
+
+.service-card .checkbox svg {
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.service-card.selected .checkbox svg {
+    opacity: 1;
+}
+
+.service-card .service-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Selected Count */
+.selected-count {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.selected-count span {
+    color: var(--aws-orange);
+    font-weight: 600;
+}
+
+/* Experience Levels Grid */
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.level-card {
+    background: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 24px 20px;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-align: center;
+}
+
+.level-card:hover {
+    border-color: var(--aws-blue);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+}
+
+.level-card.selected {
+    border-color: var(--aws-blue);
+    background: #F0F4FF;
+    box-shadow: 0 2px 8px rgba(82, 127, 255, 0.15);
+}
+
+.level-card .level-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.level-card .level-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.level-card .level-desc {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Projects List */
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.project-card {
+    background: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.project-card:hover {
+    border-color: var(--aws-orange);
+    box-shadow: var(--shadow-sm);
+}
+
+.project-card.selected {
+    border-color: var(--aws-orange);
+    background: #FFF8F0;
+    box-shadow: 0 2px 8px rgba(255, 153, 0, 0.15);
+}
+
+.project-card .project-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.project-card .project-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--aws-dark);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.project-card.selected .project-number {
+    background: var(--aws-orange);
+}
+
+.project-card .project-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.project-card .project-prompt {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-left: 42px;
+}
+
+.project-card .char-count {
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+/* Final Prompt */
+.final-prompt-container {
+    background: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.prompt-meta {
+    background: var(--aws-dark);
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.prompt-meta .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+}
+
+.prompt-meta .meta-label {
+    color: var(--text-muted);
+}
+
+.prompt-meta .meta-value {
+    color: var(--aws-orange);
+    font-weight: 600;
+}
+
+.prompt-output {
+    padding: 24px;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background: #FAFBFC;
+    border-top: 1px solid var(--border-color);
+    min-height: 120px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.prompt-actions {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.copy-feedback {
+    font-size: 0.85rem;
+    color: #28a745;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.copy-feedback.show {
+    opacity: 1;
+}
+
+/* Buttons */
+.step-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 20px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-decoration: none;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-primary {
+    background: var(--aws-orange);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--aws-orange-dark);
+    box-shadow: 0 3px 8px rgba(255, 153, 0, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--bg-white);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    border-color: var(--text-secondary);
+    background: var(--bg-card);
+}
+
+.btn-copy {
+    background: var(--aws-dark);
+    color: white;
+}
+
+.btn-copy:hover {
+    background: var(--aws-darker);
+    transform: translateY(-1px);
+}
+
+/* Footer */
+.app-footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .app-container {
+        padding: 12px;
+    }
+
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .levels-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .progress-steps {
+        gap: 0;
+    }
+
+    .progress-line {
+        min-width: 20px;
+    }
+
+    .step-label {
+        font-size: 0.65rem;
+    }
+
+    .step-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .project-card .project-prompt {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .levels-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .step-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
