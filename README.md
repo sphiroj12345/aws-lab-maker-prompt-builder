@@ -1,0 +1,1 @@
+AWS Lab Maker AI Prompt Builder — A step-by-step wizard that lets you select AWS services (18 supported), choose your experience level, and generates 5 tailored hands-on project prompts (≤950 chars each) ready to use with an AI-powered AWS Lab Maker.
